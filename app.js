@@ -11,7 +11,7 @@ app.use(routes)  // 將 request 導入路由器
 app.engine('hbs', exphbs({
   defaultLayout: 'main',
   extname: '.hbs',
-  //helpers: require('./hbsHelpers/handlebarsHelpers')  //handlebars helper之後可能會用到
+  helpers: require('./hbsHelpers/handlebarsHelpers')  //handlebars helper之後可能會用到
 }))
 app.set('view engine', 'hbs')
 
