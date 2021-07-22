@@ -9,7 +9,7 @@ const db = mongoose.connection
 db.on('error', () => {
   console.log('mongodb error!')
 })
-// 連線成功
+// 連線成功，open只會發生一次，once也只執行一次
 db.once('open', () => {
   console.log('mongodb connected!')
 })

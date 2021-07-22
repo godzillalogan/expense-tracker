@@ -8,4 +8,8 @@ router.get('/records/new', (req, res) => {
   res.render('new')
 })
 
+router.get('/records/:id/edit', (req, res) => {
+  res.render('new')
+})
+
 module.exports = router
