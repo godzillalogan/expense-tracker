@@ -2,11 +2,9 @@
   <div class="container col-sm-9">
     <form action="" class="mx-auto col-md-9 ">
       <select class="form-select" name="" id="">
-        <option value="">家居物業</option>
-        <option value="">交通出行</option>
-        <option value="">休閒娛樂</option>
-        <option value="">餐飲食品</option>
-        <option value="">其他</option>
+        {{#each categories}}
+        <option value="">{{this.categoryName}}</option>
+        {{/each}}
       </select>
     </form>
     <div class="d-flex justify-content-evenly mt-5">
