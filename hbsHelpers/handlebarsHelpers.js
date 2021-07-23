@@ -11,5 +11,10 @@ module.exports={
     }else if(recordsCategory === "其他"){
       return "fas fa-pen"
     }
-  }
+  },
+  categorySelected: function (currentCategory, categoryEnName){
+    if (currentCategory === categoryEnName){
+      return 'selected'
+    }
+  },
 }

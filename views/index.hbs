@@ -1,15 +1,16 @@
 <div class="container mt-5">
   <div class="container col-sm-9">
-    <form action="" class="mx-auto col-md-9 ">
-      <select class="form-select" name="" id="">
+    <form action="/filter" method="GET" class="mx-auto col-md-9 ">
+      <select class="form-select"name="categoryOption" id="categoryOption" onchange="submit()">
         {{#each categories}}
-        <option value="">{{this.categoryName}}</option>
+        {{!-- 在#each裡面要從home.js傳currentCategory過來，前面要寫../ --}}
+        <option value="{{this.categoryEnName}}" {{categorySelected ../currentCategory this.categoryEnName}}>{{this.categoryName}}</option>
         {{/each}}
       </select>
     </form>
     <div class="d-flex justify-content-evenly mt-5">
       <div class="fs-1">總金額:</div>
-      <div class="fs-1 text-warning">8787</div>
+      <div class="fs-1 text-warning">{{totalAmount}}</div>
     </div>
   </div>
   <div class="container list-group mt-5 w-75">
