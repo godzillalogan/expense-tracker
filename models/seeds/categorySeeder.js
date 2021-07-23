@@ -30,12 +30,11 @@ const categorySeed = [
 ]
 
 db.once('open', () => {
-  categorySeed.forEach(category => {
-    Category.create({
-      categoryName: category.categoryName,
-      categoryEnName: category.categoryEnName,
-      categoryIcon: category.categoryIcon,
-    });
-  })
-  console.log("Category done")
+  Category.create(categorySeed)
+    .then(() => {
+      console.log('Add category seeder!')
+      // 資料庫要先關閉，才能兩個種子資料都能執行
+      return db.close()
+    })
+    .catch(err => console.error(err))
 })

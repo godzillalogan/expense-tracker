@@ -22,14 +22,24 @@ const recordSeed = [
   },
 ]
 
+// db.once('open', () => {
+//   recordSeed.forEach(record => {
+//     Record.create({
+//       name: record.name,
+//       date: record.date,
+//       category: record.category,
+//       amount: record.amount
+//     });
+//   })
+//   console.log("record done")
+// })
+
 db.once('open', () => {
-  recordSeed.forEach(record => {
-    Record.create({
-      name: record.name,
-      date: record.date,
-      category: record.category,
-      amount: record.amount
-    });
-  })
-  console.log("record done")
+  Record.create(recordSeed)
+    .then(() => {
+      console.log('Add record seeder!')
+      // 資料庫要先關閉，才能兩個種子資料都能執行
+      return db.close()
+    })
+    .catch(err => console.error(err))
 })
