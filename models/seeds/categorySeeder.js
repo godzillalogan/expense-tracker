@@ -37,5 +37,5 @@ db.once('open', () => {
       categoryIcon: category.categoryIcon,
     });
   })
-  console.log("done")
+  console.log("Category done")
 })

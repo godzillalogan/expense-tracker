@@ -8,8 +8,7 @@ const Category = require('../../models/category') // 載入 Todo model
 router.get('/', (req, res) => {
   Record.find() // 取出 Record model 裡的所有資料
     .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
-    .then((records) => 
-      res.render('index', { records })) // 將資料傳給 index 樣板
+    .then(records => res.render('index', { records })) // 將資料傳給 index 樣板
     .catch(error => console.error(error)) // 錯誤處理
 
   Category.find() // 取出 Record model 裡的所有資料

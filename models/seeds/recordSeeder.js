@@ -31,5 +31,5 @@ db.once('open', () => {
       amount: record.amount
     });
   })
-  console.log("done")
+  console.log("record done")
 })
