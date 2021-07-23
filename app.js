@@ -1,11 +1,13 @@
 // 載入 express 並建構應用程式伺服器
 const express = require('express')
 const exphbs = require('express-handlebars') //沒有給 ./ ，代表去node_modules裡面去找
+const bodyParser = require('body-parser') //body-Parser
 const app = express()
 const PORT = 3000
 
 const routes = require('./routes')  // 引用路由器
 require('./config/mongoose')
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(routes)  // 將 request 導入路由器
 // setting template engine, extname: '.hbs'，是指定副檔名為.hbs，有了這行以後，我們才能把預設的長檔名改寫成短檔名
 app.engine('hbs', exphbs({

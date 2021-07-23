@@ -20,6 +20,24 @@ const recordSeed = [
     "category": "餐飲食品",
     "amount": 70
   },
+  {
+    "name": "去喝酒的計程車錢",
+    "date": "2021-03-31",
+    "category": "交通出行",
+    "amount": 120
+  },
+  {
+    "name": "買樂透",
+    "date": "2021-02-28",
+    "category": "其他",
+    "amount": 300
+  },
+  {
+    "name": "房租",
+    "date": "2021-02-26",
+    "category": "家居物業",
+    "amount": 5000
+  }
 ]
 
 // db.once('open', () => {
