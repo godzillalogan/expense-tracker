@@ -26,11 +26,9 @@
         <input type="text" list="categorylist" class="form-control " name="category" id="category"
           placeholder="Category" value="{{record.category}}" required>
         <datalist id="categorylist">
-          <option>家居物業</option>
-          <option>交通出行</option>
-          <option>休閒娛樂</option>
-          <option>餐飲食品</option>
-          <option>其他</option>
+          {{#each categories}}
+            <option>{{this.categoryName}}</option>
+          {{/each}}
         </datalist>
       </div>
       <div class="valid-feedback">OK!</div>

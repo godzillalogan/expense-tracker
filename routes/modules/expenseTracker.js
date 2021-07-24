@@ -1,11 +1,17 @@
 // 引用 Express 與 Express 路由器
 const express = require('express')
 const router = express.Router()
+const Category = require('../../models/category')
 const Record = require('../../models/record')
 
 //Create
 router.get('/records/new', (req, res) => {
-  return res.render('new')
+  return Category.find() // 取出 Record model 裡的所有資料
+    .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
+    .then((categories) => {
+      res.render('new', { categories }) // 將資料傳給 new 樣板
+    })
+    .catch(error => console.error(error)) // 錯誤處理
 })
 
 router.post('/records', (req, res) => {
@@ -16,12 +22,12 @@ router.post('/records', (req, res) => {
 })
 
 //Update
-router.get('/records/:id/edit', (req, res) => {
+router.get('/records/:id/edit', async (req, res) => {
+  const categories = await Category.find().lean()
   const id = req.params.id
-
   return Record.findById(id)
     .lean()
-    .then((record) => res.render('edit', { record }))
+    .then((record) => res.render('edit', { record ,categories}))
     .catch(error => console.log(error))
 })
 
