@@ -3,37 +3,45 @@
     <div class="mx-4">必填欄位*</div>
     <div>請輸入你的支出</div>
   </div>
-  <form action="/records" method="POST" id="form" class="mt-5 w-75 mx-auto">
+  <form action="/records" method="POST" id="form" class="mt-5 w-75 mx-auto" novalidate>
     <div class="mb-3 form-group d-flex justify-content-around">
-      <label for="name" class="form-label">名稱:</label>
-      <input type="text" class="form-control w-75" name="name" id="name" placeholder="name" required>
-      <div class="valid-feedback">OK!</div>
-      <div class="invalid-feedback">This field is required.</div>
+      <label for="name" class="form-label">名稱* :</label>
+      <div class="w-75">
+        <input type="text" class="form-control" name="name" id="name" placeholder="name" required>
+        <div class="valid-feedback">OK!</div>
+        <div class="invalid-feedback">This field is required.</div>
+      </div>
     </div>
     <div class="mb-3 form-group d-flex justify-content-around">
-      <label for="date" class="form-label">日期:</label>
-      <input type="date" class="form-control w-75" name="date" id="date" placeholder="date" required>
-      <div class="valid-feedback">OK!</div>
-      <div class="invalid-feedback">This field is required.</div>
+      <label for="date" class="form-label">日期* :</label>
+      <div class="w-75">
+        <input type="date" class="form-control" name="date" id="date" placeholder="date" required>
+        <div class="valid-feedback">OK!</div>
+        <div class="invalid-feedback">This field is required.</div>
+      </div>
     </div>
     <div class="mb-3 form-group d-flex justify-content-around">
-      <label for="category" class="form-label">分類:</label>
-      <input type="text" list="categorylist" class="form-control w-75" name="category" id="category" placeholder="Category" required>
-      <datalist id="categorylist">
-        <option>家居物業</option>
-        <option>交通出行</option>
-        <option>休閒娛樂</option>
-        <option>餐飲食品</option>
-        <option>其他</option>
-      </datalist>      
-      <div class="valid-feedback">OK!</div>
-      <div class="invalid-feedback">This field is required.</div>
+      <label for="category" class="form-label">分類* :</label>
+      <div class="w-75">
+        <input type="text" list="categorylist" class="form-control" name="category" id="category" placeholder="Category" required>
+        <datalist id="categorylist">
+          <option>家居物業</option>
+          <option>交通出行</option>
+          <option>休閒娛樂</option>
+          <option>餐飲食品</option>
+          <option>其他</option>
+        </datalist>      
+        <div class="valid-feedback">OK!</div>
+        <div class="invalid-feedback">This field is required.</div>
+      </div>
     </div>
-     <div class="mb-3 form-group d-flex justify-content-around">
-      <label for="amount" class="form-label">金額:</label>
-      <input type="number" class="form-control w-75" name="amount" id="amount" placeholder="amount" required>
-      <div class="valid-feedback">OK!</div>
-      <div class="invalid-feedback">This field is required.</div>
+    <div class="mb-3 form-group d-flex justify-content-around">
+      <label for="amount" class="form-label">金額* :</label>
+      <div class="w-75">
+        <input type="number" min="1" class="form-control" name="amount" id="amount" placeholder="amount" required>
+        <div class="valid-feedback">OK!</div>
+        <div class="invalid-feedback">This field is required.</div>
+      </div>
     </div>
     <div class="d-flex justify-content-center">
       <button type="submit" class="btn btn-outline-info" id="submit-button">新增支出</button>
