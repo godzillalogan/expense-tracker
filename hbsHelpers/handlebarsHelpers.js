@@ -12,9 +12,11 @@ module.exports={
       return "fas fa-pen"
     }
   },
-  categorySelected: function (currentCategory, categoryEnName){
-    if (currentCategory === categoryEnName){
+  categorySelected: function (a, b){
+    if (a === b){
       return 'selected'
     }
   },
+
+
 }

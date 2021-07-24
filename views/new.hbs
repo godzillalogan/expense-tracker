@@ -23,12 +23,11 @@
     <div class="mb-3 form-group d-flex justify-content-around">
       <label for="category" class="form-label">分類* :</label>
       <div class="w-75">
-        <input type="text" list="categorylist" class="form-control" name="category" id="category" placeholder="Category" required>
-        <datalist id="categorylist">
+        <select type="text" list="categorylist" class="form-control" name="category" id="category" placeholder="Category" required>
           {{#each categories}}
-            <option>{{this.categoryName}}</option>
+            <option value="{{this.categoryName}}">{{this.categoryName}}</option>
           {{/each}}
-        </datalist>      
+        </select>      
         <div class="valid-feedback">OK!</div>
         <div class="invalid-feedback">This field is required.</div>
       </div>
