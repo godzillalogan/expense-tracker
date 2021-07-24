@@ -25,7 +25,7 @@ router.get('/records/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-router.post('/records/:id/edit', (req, res) => {
+router.put('/records/:id', (req, res) => {
   const id = req.params.id
   /////解構賦值
   const { name, date, category, amount } = req.body
@@ -43,7 +43,7 @@ router.post('/records/:id/edit', (req, res) => {
 
 
 //delete
-router.post('/records/:id/delete', (req, res) => {
+router.delete('/records/:id', (req, res) => {
   const id = req.params.id
   return Record.findById(id)
     .then(record => record.remove())
