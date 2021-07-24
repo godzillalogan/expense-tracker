@@ -17,7 +17,31 @@ router.post('/records', (req, res) => {
 
 //Update
 router.get('/records/:id/edit', (req, res) => {
-  res.render('new')
+  const id = req.params.id
+
+  return Record.findById(id)
+    .lean()
+    .then((record) => res.render('edit', { record }))
+    .catch(error => console.log(error))
 })
+
+router.post('/records/:id/edit', (req, res) => {
+  const id = req.params.id
+  /////解構賦值
+  const { name, date, category, amount } = req.body
+  return Record.findById(id)
+    .then(record => {
+      record.name = name
+      record.date = date
+      record.category = category
+      record.amount = amount
+      return record.save()
+    })
+    .then(() => res.redirect(`/`))
+    .catch(error => console.log(error))
+})
+
+
+
 
 module.exports = router
