@@ -21,7 +21,7 @@ const recordSeed = [
     "amount": 70
   },
   {
-    "name": "去喝酒的計程車錢",
+    "name": "計程車錢",
     "date": "2021-03-31",
     "category": "交通出行",
     "amount": 120
@@ -39,18 +39,6 @@ const recordSeed = [
     "amount": 5000
   }
 ]
-
-// db.once('open', () => {
-//   recordSeed.forEach(record => {
-//     Record.create({
-//       name: record.name,
-//       date: record.date,
-//       category: record.category,
-//       amount: record.amount
-//     });
-//   })
-//   console.log("record done")
-// })
 
 db.once('open', () => {
   Record.create(recordSeed)

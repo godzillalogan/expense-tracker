@@ -17,7 +17,6 @@ router.get('/', async (req, res) => {
       res.render('index', { categories, records, totalAmount}) // 將資料傳給 index 樣板
     }) 
     .catch(error => console.error(error)) // 錯誤處理
-
 })
 
 router.get('/filter', async (req, res) => {
@@ -51,14 +50,10 @@ router.get('/filter', async (req, res) => {
         // const category = categories.find(category.categoryName === record.category)
         totalAmount += record.amount
       });
-    
       res.render('index', { categories, records, totalAmount, currentCategory }) // 將資料傳給 index 樣板
     })
     .catch(error => console.error(error)) // 錯誤處理
 
 })
-
-
-
 module.exports = router
 

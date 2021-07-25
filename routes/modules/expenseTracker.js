@@ -47,7 +47,6 @@ router.put('/records/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 
-
 //delete
 router.delete('/records/:id', (req, res) => {
   const id = req.params.id
@@ -56,7 +55,5 @@ router.delete('/records/:id', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
-
-
 
 module.exports = router
