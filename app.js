@@ -5,7 +5,7 @@ const bodyParser = require('body-parser') //body-Parser
 const methodOverride = require('method-override')
 
 const app = express()
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 
 const routes = require('./routes')  // 引用路由器
 require('./config/mongoose')
