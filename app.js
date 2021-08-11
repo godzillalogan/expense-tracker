@@ -9,6 +9,8 @@ const app = express()
 const PORT = process.env.PORT || 3000
 
 const routes = require('./routes')  // 引用路由器
+
+const usePassport = require('./config/passport')
 require('./config/mongoose')
 
 
@@ -28,7 +30,7 @@ app.use(session({
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
-
+usePassport(app)
 
 app.use(routes)  // 將 request 導入路由器
 
