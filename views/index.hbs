@@ -2,6 +2,7 @@
   <div class="container col-sm-9">
     <form action="/filter" method="GET" class="mx-auto col-md-9 ">
       <select class="form-select"name="categoryOption" id="categoryOption" onchange="submit()">
+        <option selected disabled value="">查看類別開銷</option>
         {{#each categories}}
         {{!-- 在#each裡面要從home.js傳currentCategory過來，前面要寫../ --}}
         <option value="{{this.categoryEnName}}" {{categorySelected ../currentCategory this.categoryEnName}}>{{this.categoryName}}</option>
