@@ -4,12 +4,12 @@ const router = express.Router()
 const home = require('./modules/home')
 const expenseTracker = require('./modules/expenseTracker')
 const users = require('./modules/users')
+const { authenticator } = require('../middleware/auth')
 
-
+//條件嚴謹的要先判斷
 router.use('/users', users)
-// 將網址結構符合 / 字串的 request 導向 home 模組 
-router.use('/', home)
-router.use('/', expenseTracker)
+router.use('/', authenticator, home)
+router.use('/', authenticator, expenseTracker)
 
 
 // 準備引入路由模組
