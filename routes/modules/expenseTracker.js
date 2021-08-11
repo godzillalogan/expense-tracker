@@ -15,27 +15,30 @@ router.get('/records/new', (req, res) => {
 })
 
 router.post('/records', (req, res) => {
+  const userId = req.user._id
   const { name, date, category,amount } = req.body
-  return Record.create({ name, name, date, category, amount })     // 存入資料庫
+  return Record.create({ name, name, date, category, amount, userId })     // 存入資料庫
     .then(() => res.redirect('/')) // 新增完成後導回首頁
     .catch(error => console.log(error))
 })
 
 //Update
 router.get('/records/:id/edit', async (req, res) => {
+  const userId = req.user._id
   const categories = await Category.find().lean()
-  const id = req.params.id
-  return Record.findById(id)
+  const _id = req.params.id
+  return Record.findOne({ _id, userId})
     .lean()
     .then((record) => res.render('edit', { record ,categories}))
     .catch(error => console.log(error))
 })
 
 router.put('/records/:id', (req, res) => {
-  const id = req.params.id
+  const userId = req.user._id
+  const _id = req.params.id
   /////解構賦值
   const { name, date, category, amount } = req.body
-  return Record.findById(id)
+  return Record.findOne({ _id, userId })
     .then(record => {
       record.name = name
       record.date = date
@@ -49,8 +52,9 @@ router.put('/records/:id', (req, res) => {
 
 //delete
 router.delete('/records/:id', (req, res) => {
-  const id = req.params.id
-  return Record.findById(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  return Record.findOne({ _id, userId })
     .then(record => record.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))

@@ -5,9 +5,10 @@ const Record = require('../../models/record') // 載入 Todo model
 const Category = require('../../models/category') // 載入 Todo model
 
 router.get('/', async (req, res) => {
+  const userId = req.user._id
   const categories = await Category.find().lean()
 
-  return Record.find() // 取出 Record model 裡的所有資料
+  return Record.find({ userId }) // 取出 Record model 裡的所有資料
     .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
     .then((records) =>{ 
       let totalAmount = 0
@@ -20,6 +21,7 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/filter', async (req, res) => {
+  const userId = req.user._id
   const categories = await Category.find().lean()
   // console.log(categories)
   const currentCategory = req.query.categoryOption
@@ -37,7 +39,7 @@ router.get('/filter', async (req, res) => {
       return '其他'
     }
   }
-  return Record.find() // 取出 Record model 裡的所有資料
+  return Record.find({ userId }) // 取出 Record model 裡的所有資料
     .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
     .sort({ _id: 'asc' })
     .then((records) => {
