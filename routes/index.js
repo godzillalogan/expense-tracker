@@ -4,10 +4,13 @@ const router = express.Router()
 const home = require('./modules/home')
 const expenseTracker = require('./modules/expenseTracker')
 const users = require('./modules/users')
+const auth = require('./modules/auth')
 const { authenticator } = require('../middleware/auth')
+
 
 //條件嚴謹的要先判斷
 router.use('/users', users)
+router.use('/auth', auth)
 router.use('/', authenticator, home)
 router.use('/', authenticator, expenseTracker)
 
