@@ -20,6 +20,10 @@ const recordSchema = new Schema({
     type: Number,
     required: true
   },
+  merchant:{
+    type: String,
+    required: true
+  },
   userId: {  // 加入關聯設定
     type: Schema.Types.ObjectId,
     ref: 'User',

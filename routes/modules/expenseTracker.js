@@ -16,8 +16,8 @@ router.get('/records/new', (req, res) => {
 
 router.post('/records', (req, res) => {
   const userId = req.user._id
-  const { name, date, category,amount } = req.body
-  return Record.create({ name, name, date, category, amount, userId })     // 存入資料庫
+  const { name, date, category,amount,merchant } = req.body
+  return Record.create({ name, name, date, category, amount, merchant, userId })     // 存入資料庫
     .then(() => res.redirect('/')) // 新增完成後導回首頁
     .catch(error => console.log(error))
 })
@@ -37,13 +37,14 @@ router.put('/records/:id', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
   /////解構賦值
-  const { name, date, category, amount } = req.body
+  const { name, date, category, amount,merchant } = req.body
   return Record.findOne({ _id, userId })
     .then(record => {
       record.name = name
       record.date = date
       record.category = category
       record.amount = amount
+      record.merchant = merchant
       return record.save()
     })
     .then(() => res.redirect(`/`))

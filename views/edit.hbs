@@ -13,6 +13,14 @@
       </div>
     </div>
     <div class="mb-3 form-group d-flex justify-content-around">
+      <label for="name" class="form-label">商家* :</label>
+      <div class="w-75">
+        <input type="text" class="form-control" name="merchant" id="merchant" value="{{record.merchant}}" placeholder="merchant" required>
+        <div class="valid-feedback">OK!</div>
+        <div class="invalid-feedback">This field is required.</div>
+      </div>
+    </div>
+    <div class="mb-3 form-group d-flex justify-content-around">
       <label for="date" class="form-label">日期* :</label>
       <div class="w-75">
         <input type="date" class="form-control" name="date" id="date" placeholder="date" value="{{record.date}}" required>
