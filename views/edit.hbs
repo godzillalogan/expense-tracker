@@ -23,7 +23,7 @@
     <div class="mb-3 form-group d-flex justify-content-around">
       <label for="date" class="form-label">日期* :</label>
       <div class="w-75">
-        <input type="date" class="form-control" name="date" id="date" placeholder="date" value="{{record.date}}" required>
+        <input type="date" class="form-control" name="date" id="date" placeholder="date" value="{{dateFormatAnother record.date}}" required>
         <div class="valid-feedback">OK!</div>
         <div class="invalid-feedback">This field is required.</div>
       </div>
@@ -34,7 +34,7 @@
         <select type="text" list="categorylist" class="form-control " name="category" id="category"
           placeholder="Category" value="{{record.category}}" required>
           {{#each categories}}
-            <option value="{{this.categoryName}}" {{categorySelected this.categoryName ../record.category}}>{{this.categoryName}}</option>
+            <option value="{{this.categoryName}}" {{Selected this.categoryName ../record.category}}>{{this.categoryName}}</option>
           {{/each}}
         </select>
       </div>

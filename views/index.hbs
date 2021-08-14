@@ -1,13 +1,24 @@
 <div class="container mt-5">
-  <div class="container col-sm-9">
+  <div class="container col-sm-9 w-50">
     <form action="/filter" method="GET" class="mx-auto col-md-9 ">
       <select class="form-select"name="categoryOption" id="categoryOption" onchange="submit()">
         <option selected disabled value="">查看類別開銷</option>
         {{#each categories}}
         {{!-- 在#each裡面要從home.js傳currentCategory過來，前面要寫../ --}}
-        <option value="{{this.categoryEnName}}" {{categorySelected ../currentCategory this.categoryEnName}}>{{this.categoryName}}</option>
+        <option value="{{this.categoryEnName}}" {{Selected ../currentCategory this.categoryEnName}}>{{this.categoryName}}</option>
         {{/each}}
       </select>
+      <div class="d-flex mt-3 justify-content-between">
+        <input type="month" id="yearMonthOption" class="d-inline-block col-5 mr-1" name="yearMonthOption" min="2001-01" max="2100-12"
+          value="{{currentYearMonth}}" onchange="this.form.submit()">
+        {{!-- <select class="form-select w-50" name="MonthOption" id="monthOption" onchange="submit()">
+          <option value="" selected disabled>查看月份</option>
+          {{#each months}}
+            <option value="{{this.number}}" {{Selected this.number currentMonth}}>{{this.monthEN}}</option>
+          {{/each}}
+        </select> --}}
+        <a href="/" type="button" class="btn btn-info">清空條件</a>
+      </div>
     </form>
     <div class="d-flex justify-content-evenly mt-5">
       <div class="fs-1">總金額:</div>
@@ -18,11 +29,11 @@
     {{#each records}}
     <li class="row mb-2">
       <div class="col-1">
-        <i class="{{categoryTurnIcon this.category}} fs-1 text-info"></i>
+        <i class="{{categoryTurnIcon this.category ../categories}} fs-1 text-info"></i>
       </div>
       <div class="col-2">
         <div>{{this.name}}</div>
-        <div>{{this.date}}</div>
+        <div>{{dateFormat this.date}}</div>
       </div>
       <div class="col-6">
         <div class="fs-3 text-info">{{this.merchant}}</div>
