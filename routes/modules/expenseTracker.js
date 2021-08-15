@@ -37,7 +37,6 @@ router.get('/records/:id/edit', async (req, res) => {
 router.put('/records/:id', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
-  /////解構賦值
   const { name, date, category, amount,merchant } = req.body
   return Record.findOne({ _id, userId })
     .then(record => {

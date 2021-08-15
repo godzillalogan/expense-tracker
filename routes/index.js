@@ -7,13 +7,11 @@ const users = require('./modules/users')
 const auth = require('./modules/auth')
 const { authenticator } = require('../middleware/auth')
 
-
 //條件嚴謹的要先判斷
 router.use('/users', users)
 router.use('/auth', auth)
 router.use('/', authenticator, home)
 router.use('/', authenticator, expenseTracker)
-
 
 // 準備引入路由模組
 // 匯出路由器

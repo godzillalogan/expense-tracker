@@ -11,12 +11,6 @@
       <div class="d-flex mt-3 justify-content-between">
         <input type="month" id="yearMonthOption" class="d-inline-block col-5 mr-1" name="yearMonthOption" min="2001-01" max="2100-12"
           value="{{currentYearMonth}}" onchange="this.form.submit()">
-        {{!-- <select class="form-select w-50" name="MonthOption" id="monthOption" onchange="submit()">
-          <option value="" selected disabled>查看月份</option>
-          {{#each months}}
-            <option value="{{this.number}}" {{Selected this.number currentMonth}}>{{this.monthEN}}</option>
-          {{/each}}
-        </select> --}}
         <a href="/" type="button" class="btn btn-info">清空條件</a>
       </div>
     </form>
@@ -46,7 +40,6 @@
         <form action="/records/{{this._id}}/?_method=DELETE" method="POST">
           <button type="submit" class="btn btn-outline-danger">刪除</button>
         </form>
-        {{!-- <a href="" class="btn btn-outline-danger">刪除</a> --}}
       </div>
     </li>
     {{/each}}

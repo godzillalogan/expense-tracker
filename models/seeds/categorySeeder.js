@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 db = require('../../config/mongoose')
 const Category = require('../category') //載入 record model
 
@@ -30,11 +34,17 @@ const categorySeed = [
 ]
 
 db.once('open', () => {
-  Category.create(categorySeed)
-    .then(() => {
-      console.log('Add category seeder!')
-      // 資料庫要先關閉，才能兩個種子資料都能執行
-      return db.close()
+  Promise.all(categorySeed.map(async category =>{
+    await Category.create({
+      categoryName: category.categoryName,
+      categoryEnName: category.categoryEnName,
+      categoryIcon: category.categoryIcon,
     })
-    .catch(err => console.error(err))
+  }))
+  .then(() => {
+    console.log('Add category seeder!')
+    // 資料庫要先關閉，才能兩個種子資料都能執行
+    return db.close()
+  })
+  .catch(err => console.error(err))
 })
