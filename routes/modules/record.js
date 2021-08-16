@@ -3,7 +3,6 @@ const express = require('express')
 const router = express.Router()
 const Category = require('../../models/category')
 const Record = require('../../models/record')
-const dayjs = require('dayjs')
 
 //Create
 router.get('/records/new', (req, res) => {
@@ -18,7 +17,7 @@ router.get('/records/new', (req, res) => {
 router.post('/records', (req, res) => {
   const userId = req.user._id
   const { name, date, category,amount,merchant } = req.body
-  return Record.create({ name, name, date, category, amount, merchant, userId })     // 存入資料庫
+  return Record.create({ ...req.body,userId })     // 存入資料庫
     .then(() => res.redirect('/')) // 新增完成後導回首頁
     .catch(error => console.log(error))
 })
@@ -40,11 +39,7 @@ router.put('/records/:id', (req, res) => {
   const { name, date, category, amount,merchant } = req.body
   return Record.findOne({ _id, userId })
     .then(record => {
-      record.name = name
-      record.date = date
-      record.category = category
-      record.amount = amount
-      record.merchant = merchant
+      Object.assign(record, req.body)
       return record.save()
     })
     .then(() => res.redirect(`/`))

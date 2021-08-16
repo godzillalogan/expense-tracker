@@ -33,8 +33,8 @@
 
 # 使用方法
 
-1. 終端機輸入指令 `git clone https://github.com/godzillalogan/expenseTracker.git`
-2. 進入專案 `cd exprenseTracker`
+1. 終端機輸入指令 `git clone https://github.com/godzillalogan/expense-tracker.git`
+2. 進入專案 `cd expense-tracker`
 3. 安裝相關套件 `npm install`
 4. 新增種子資料 `npm run seed`
 5. 開啟專案 `npm run dev`

@@ -33,9 +33,9 @@ router.get('/filter', async (req, res) => {
     const categories = await Category.find().lean()
     const currentCategory = req.query.categoryOption
     const currentYearMonth = req.query.yearMonthOption
-    const currentYearMonthtoDate = dayjs(currentYearMonth).toDate() //轉成Date
-    const startTime = dayjs(currentYearMonthtoDate).add(8, 'hour').$d  //+8小時
-    const endTimet = dayjs(currentYearMonthtoDate).add(1, 'month').$d  //+1個月
+    const currentYearMonthToDate = dayjs(currentYearMonth).toDate() //轉成Date
+    const startTime = dayjs(currentYearMonthToDate).add(8, 'hour').$d  //+8小時
+    const endTime = dayjs(currentYearMonthToDate).add(1, 'month').$d  //+1個月
 
     //把category英文轉成中文
     let currentCategoryCH = ''
@@ -49,7 +49,7 @@ router.get('/filter', async (req, res) => {
       userId
     }
     currentCategory ? allFilter.category = currentCategoryCH:''
-    currentYearMonth ? allFilter.date = { $gte: startTime, $lte: endTimet } : ''  //從gte開始,$lte結束的範圍找
+    currentYearMonth ? allFilter.date = { $gte: startTime, $lte: endTime } : ''  //從gte開始,$lte結束的範圍找
     const records = await Record.aggregate([
       { $project: { name: 1, date: 1, category: 1, merchant:1 , amount: 1, userId: 1 }},
       { $match: allFilter},
